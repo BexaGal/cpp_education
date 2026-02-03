@@ -5,7 +5,7 @@ This repo is created for sharing my C++ code with my fellow students and teacher
 Весь C++ код компилируется в Linux (Ubuntu 24.04) компилятором GNU (g++). Иногда применяются специфичные для этого компилятора пРИкОлЫ, например задание размера массива переменной, а не константой.
 
 ### Как организовать?
-Обзаведитесь машиной на Ubuntu, Kubuntu, Debian или любом другом APT дистрибутиве (а если вы любитель RPM - это ваше дело). Можете воспользоваться [WSL на Windows](https://learn.microsoft.com/ru-ru/windows/wsl/install) или развернуть виртуальную машину.
+Обзаведитесь машиной на [Ubuntu Desktop](https://ubuntu.com/desktop) (для базовичков), [Ubuntu Server](https://ubuntu.com/server) (для БАЗИРОВАННЫХ), [Kubuntu](https://kubuntu.org/) (оно красивое), [Debian](https://www.debian.org/index.ru.html) (уважаю) или любом другом APT дистрибутиве (а если вы любитель RPM - это ваше дело). Можете воспользоваться [WSL на Windows](https://learn.microsoft.com/ru-ru/windows/wsl/install) или развернуть виртуальную машину на [Hyper-V](https://learn.microsoft.com/ru-ru/windows-server/virtualization/hyper-v/get-started/install-hyper-v?tabs=powershell&pivots=windows), [VirtualBox](https://www.virtualbox.org/) (наиболее простой вариант), [VMWare](https://www.vmware.com/) или даже [KVM](https://linux-kvm.org/page/Documents), хотя, если вы используете KVM, это всё вам читать уже не нужно.
 
 Установите g++ и git:
 ```bash
