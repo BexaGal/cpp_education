@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
     bool help_flag = false;
     bool write_flag = false;
     bool efficient_flag = false;
-
+    // Парсинг аргументов командной строки
     for (int i = 1; i < argc; i++) {
         string arg = argv[i];
         if (arg == "--help" || arg == "-h") {
