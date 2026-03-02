@@ -121,7 +121,7 @@ int main(int argc, char* argv[]) {
     
     insertion_sort(array2, size, cmps[1], swps[1]);
     // Вывод отсортированных массивов, если указано в аргументах
-    if (argc > 1 && (string(argv[1]) == "-w" || string(argv[1]) == "--write")) {
+    if (write_flag) {
         cout << "Sorted array, Bubble: ";
         for (int i = 0; i < size; i++) {
             cout << array1[i] << " ";
