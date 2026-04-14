@@ -7,7 +7,7 @@ int main(){
     int x, y, n;
     cin >> x >> y >> n;
     float* cutters = new float[n];
-    int* dumplings = new int[n];
+    int* dumplings = new int[n]();
 
     for(int i = 0, a; i < n; i++){
         cin >> a;
