@@ -137,7 +137,9 @@ int main(){
         cout << "Matrix is mixed" << endl;
     }
 
-
+    for(int i = 0; i < size1; i++){
+        delete[] matrix[i];
+    }
     delete[] matrix;
 
 }
