@@ -1,18 +1,7 @@
 #include <iostream>
-
+#include <random>
 using namespace std;
 
-// Finds minimal element of matrix using basic sweep
-int findmin(unsigned int** arr, unsigned int n1 = 1, unsigned int n2 = 1){
-    int minim = arr[0][0];
-    for(int i = 0; i < n1; i++){
-        for(int j = 0; j < n2; j++)
-            if(arr[i][j]){
-                if(minim > arr[i][j]){minim = arr[i][j];}
-            }
-    }
-    return minim;
-}
 // Sweeps matrix for largest element
 int findmax(unsigned int** arr, unsigned int n1 = 1, unsigned int n2 = 1){
     int maxim = arr[0][0];
@@ -59,6 +48,18 @@ void printmatrix(unsigned int** arr, unsigned int n1 = 1, unsigned int n2 = 1, b
     }
 }
 
+unsigned int maindiagsum(unsigned int** arr, unsigned int n1 = 1, unsigned int n2 = 1){
+    unsigned int sum = 0;
+    for(unsigned int i = 0; i < n1; i++){
+        for(unsigned int j = 0; j < n2; j++){
+            if(i == j){
+                sum += arr[i][j];
+            }
+        }
+    }
+    return sum;
+}
+
 int main(int argc, char* argv[]){
 
     bool help_flag = false;                                 // Parsing CLI arguments
@@ -85,8 +86,8 @@ int main(int argc, char* argv[]){
 
     unsigned int rows = 0; unsigned int columns = 0;
     cout << "Enter dimentions: "; cin >> rows >> columns;
-    if(rows < 1 || columns < 1){
-        cout << "ERROR: dimensions must be larger than 0\n";
+    if(rows < 2 || columns < 2){
+        cout << "ERROR: dimensions must be larger than 2\n";
         return 1;
     }
     unsigned int** matrix = new unsigned int*[rows];        // Declaring memory space for the matrix as pointer to pointers
@@ -94,17 +95,25 @@ int main(int argc, char* argv[]){
         matrix[i] = new unsigned int[columns];              // These are the columns. Matrix stores pointers to these columns
     }
 
-
+    random_device rd;                                       // Creating random number generator
+    mt19937 gen(rd());
+    // Лимит от 1 до 50
+    uniform_int_distribution<> dis(1, 51);
+    
     for(int i = 0; i < rows; i++){                          // Populating the matrix
         for(int j = 0; j < columns; j++){
-            cout << "Enter row " << i << " ";
-            cout << "Column " << j <<": "; cin >> matrix[i][j];
+            matrix[i][j] = dis(gen);
         }
     }
-    cout << "Matrix:\n";
-    printmatrix(matrix, rows, columns, pretty_flag);                     // Printing the matrix
+    
+    printmatrix(matrix, rows, columns, pretty_flag);
 
-    cout << "Minimal element: " << findmin(matrix, rows, columns) << endl;  // Printing the minimal element
+    cout << "Main diagonal element's sum: " << maindiagsum(matrix, rows, columns) << endl;
+    cout << "Second row: ";
+    for(unsigned int i = 0; i < columns; i++){
+        cout << matrix[1][i] << " ";
+    }
+    cout << "\n";
 
     for(int i = 0; i < rows; i++){                          // Deletion routine
         delete[] matrix[i];                                 // Each column must be deleted separately, since deletion of "pointer to pointers"
